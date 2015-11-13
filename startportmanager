@@ -3,11 +3,11 @@
 # Quick start-stop-daemon example, derived from Debian /etc/init.d/ssh
 set -e
 
-# Must be a valid filename
+#--------Change only this line to program location---------
+DAEMON=/home/pi/portManager/portmanager
 NAME=portmanager
 PIDFILE=/var/run/$NAME.pid
 #This is the command to be run, give the full pathname
-DAEMON=/home/pi/portManager/portmanager
 DAEMON_OPTS=""
 
 export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"

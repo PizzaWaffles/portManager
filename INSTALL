@@ -1,0 +1,20 @@
+#!/bin/bash
+
+echo "-----Beginning Install------" 
+echo "This program will install/check miniupnpc"
+
+if [[ "$(whoami)" != "root" ]]; then
+	echo "FaTaL need root"
+	exit 1
+fi
+
+sudo apt-get install miniupnpc
+
+nano startportmanager
+nano portmanager
+
+#sudo cp startportmanager /etc/init.d/portmanager
+#sudo update-rc.d portmanager defaults
+#sudo service portmanager start
+
+echo "If it says 'ok' above your all set!"

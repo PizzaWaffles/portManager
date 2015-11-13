@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#------------Change only this line to reflect current directory--------------
 workingDir=/home/pi/portManager/
 
 logLoc=tmp/portManager.log
@@ -14,6 +15,9 @@ function log {
 
 function setupPorts {
 	log "Setting ports"
+
+#---change these lines for your port forwarding options-------------------
+#---Usage: upnpc -a <IP> <InteralPort> <ExternalPort> <Protocol>-----------
 	log "Returned:$(upnpc -a 192.168.0.15 22 5555 TCP)"
 	log "Returned:$(upnpc -a 192.168.0.15 8080 666 TCP)"
 }
