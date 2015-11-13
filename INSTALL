@@ -13,8 +13,8 @@ sudo apt-get install miniupnpc
 nano startportmanager
 nano portmanager
 
-#sudo cp startportmanager /etc/init.d/portmanager
-#sudo update-rc.d portmanager defaults
-#sudo service portmanager start
+sudo cp startportmanager /etc/init.d/portmanager
+sudo update-rc.d portmanager defaults
+sudo service portmanager start
 
 echo "If it says 'ok' above your all set!"

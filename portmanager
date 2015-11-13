@@ -30,7 +30,7 @@ while true; do
 	upnpc -l > $dataFile
 
 	data=$(grep "libminiupnpc" $dataFile)
-	log "RawData___$data"
+#	log "RawData___$data"
 
 	if [[ $data != *""* ]]
 	then
