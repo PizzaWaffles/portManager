@@ -1,15 +1,15 @@
 #!/bin/bash
 
 #------------Change only this line to reflect current directory--------------
-workingDir=/home/pi/portManager/
+workingDir="/home/pi/portManager/"
 
-logLoc=tmp/portManager.log
+logLoc="tmp/portManager-$(date -I).log"
 logLoc="$workingDir$logLoc"
-dataFile=tmp/openPorts.data
+dataFile="tmp/openPorts.data"
 dataFile="$workingDir$dataFile"
 
 function log {
-	date=$(date)
+	date="$(date)"
 	echo "$date ---$@---" >> $logLoc
 }
 
