@@ -11,7 +11,7 @@ fi
 sudo apt-get install miniupnpc
 
 nano startportmanager
-nano portmanager
+nano portManager
 
 sudo cp startportmanager /etc/init.d/portmanager
 sudo update-rc.d portmanager defaults
