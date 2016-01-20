@@ -3,10 +3,11 @@
 #------------Change only this line to reflect current directory--------------
 workingDir="/home/pi/portManager/"
 
-logLoc="tmp/portManager-$(date -I).log"
+logLoc="tmp/portManager-$(date -I)--$(date +%M%N).log"
 logLoc="$workingDir$logLoc"
 dataFile="tmp/openPorts.data"
 dataFile="$workingDir$dataFile"
+lanIP=$(/sbin/ip -4 -o addr show dev eth0| awk '{split($4,a,"/");print a[1]}')
 
 function log {
 	date="$(date)"
@@ -18,8 +19,8 @@ function setupPorts {
 
 #---change these lines for your port forwarding options-------------------
 #---Usage: upnpc -a <IP> <InteralPort> <ExternalPort> <Protocol>-----------
-	log "Returned:$(upnpc -a 192.168.0.15 22 5555 TCP)"
-	log "Returned:$(upnpc -a 192.168.0.15 8080 666 TCP)"
+	log "Returned:$(upnpc -a $lanIP 22 5555 TCP)"
+	log "Returned:$(upnpc -a $lanIP 8080 666 TCP)"
 }
 
 echo "" > $logLoc
@@ -32,10 +33,11 @@ while true; do
 	data=$(grep "libminiupnpc" $dataFile)
 #	log "RawData___$data"
 
-	if [[ $data != *""* ]]
+	if [[ $data != *"$lanIP"* ]]
 	then
 		log "Ports not setup..."
 		setupPorts
+		pushbullet 'New WAN IP: '$(curl -s http://whatismijnip.nl |cut -d " " -f 5)
 	fi
 	sleep 5m
 done
