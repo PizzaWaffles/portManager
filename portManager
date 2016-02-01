@@ -9,6 +9,7 @@ dataFile="tmp/openPorts.data"
 dataFile="$workingDir$dataFile"
 lanIP=$(/sbin/ip -4 -o addr show dev eth0| awk '{split($4,a,"/");print a[1]}')
 
+rm -r tmp/*
 function log {
 	date="$(date)"
 	echo "$date ---$@---" >> $logLoc
@@ -39,5 +40,5 @@ while true; do
 		setupPorts
 		pushbullet 'New WAN IP: '$(curl -s http://whatismijnip.nl |cut -d " " -f 5)
 	fi
-	sleep 5m
+	sleep 300
 done
