@@ -10,11 +10,19 @@ fi
 
 sudo apt-get install miniupnpc
 
+echo "This will now open the script used for starting and maintaing portManager in init.d"
+echo ""
+echo "Change the working directory variable"
+read -n1 -r -p "Press any key to continue..." key
 nano startportmanager
+
+echo ""
+echo "Change the working directory variables and the lines for port management"
+read -n1 -r -p "Press any key to continue..." key
 nano portManager
 
 sudo cp startportmanager /etc/init.d/portmanager
 sudo update-rc.d portmanager defaults
 sudo service portmanager start
 
-echo "If it says 'ok' above your all set!"
+echo "If there is no errors above your all set!"
