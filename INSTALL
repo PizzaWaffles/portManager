@@ -25,4 +25,6 @@ sudo cp startportmanager /etc/init.d/portmanager
 sudo update-rc.d portmanager defaults
 sudo service portmanager start
 
+mkdir tmp
+
 echo "If there is no errors above your all set!"
